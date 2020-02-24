@@ -1,4 +1,7 @@
-﻿namespace TechnicalInterview
+﻿using System;
+using System.Collections.Generic;
+
+namespace TechnicalInterview
 {
     public class CurrentAccount : IAccount
     {
@@ -25,6 +28,16 @@
             if (newValue < -Overdraft)
                 throw new AccountOverdrawnException();
             Balance = newValue;
+        }
+
+        private List<Transaction> transactions;
+
+        public List<Transaction> GetTransactions() => transactions;
+
+        class Transaction
+        {
+            public System.Guid Id;
+            public decimal DepositWithdrawal;
         }
     }
 }

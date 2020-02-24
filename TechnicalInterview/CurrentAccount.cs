@@ -22,6 +22,8 @@
         {
             var tempValue = Balance;
             var newValue = tempValue - amount;
+            if (newValue < -Overdraft)
+                throw new AccountOverdrawnException();
             Balance = newValue;
         }
     }
